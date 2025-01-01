@@ -21,8 +21,7 @@ for free but I highly recommend you buy a physical copy.
 
 Things I **need** to do:
 
-- Set up CSharpier. Consider a maximum line length of 130 characters.
-- Set up initial C# projects including tests.
+- TODO
 
 Things I **want** to do:
 
