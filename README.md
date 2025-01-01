@@ -32,4 +32,8 @@ Things I **want** to do:
 
 Things I'm thinking about:
 
-- TODO
+- Can I define Lox code in different files and get an interpreter/compiler to
+  load them all to run/build a Lox application? What files extension should I use?
+  **\*.lxys** perhaps?
+
+- Can I add syntax highlighting for Lox code to vscode as a plugin?
