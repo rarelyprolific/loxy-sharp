@@ -25,7 +25,7 @@ Things I **need** to do:
 
 Things I **want** to do:
 
-- TODO
+- Can I implement **constant folding** as a compile-time optimisation?
 
 ## Ideas
 
@@ -36,3 +36,5 @@ Things I'm thinking about:
   **\*.lxys** perhaps?
 
 - Can I add syntax highlighting for Lox code to vscode as a plugin?
+
+- How do I benchmark the speed of the interpreted or compiled language at runtime?
