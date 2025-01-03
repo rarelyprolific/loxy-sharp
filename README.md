@@ -27,6 +27,13 @@ Things I **want** to do:
 
 - Can I implement **constant folding** as a compile-time optimisation?
 
+- Can I make _"everything a class"_ so that even primitive types can have methods?
+
+- Can I refactor the **print** statement from being a language feature to be a
+  method in the standard library?
+
+- Extend the standard library with more features such as common string functions.
+
 ## Ideas
 
 Things I'm thinking about:
@@ -38,3 +45,7 @@ Things I'm thinking about:
 - Can I add syntax highlighting for Lox code to vscode as a plugin?
 
 - How do I benchmark the speed of the interpreted or compiled language at runtime?
+
+- Can I replace the `Program.Report()` method with logic to redirect errors and
+  messages to places more interesting than the console. Can I also show the user
+  where in a line the error occurs with surrounding code for context?
