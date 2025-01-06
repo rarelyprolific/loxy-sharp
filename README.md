@@ -6,6 +6,21 @@ interpreter in C#.
 This is my own attempt at building a version of the **Lox** language created by
 Robert Nystrom in the book [Crafting Interpreters](https://craftinginterpreters.com/).
 
+## Lox Grammar (BNF)
+
+```txt
+expression -> literal | unary | binary | grouping ;
+literal    -> NUMBER | STRING | "true" | "false" | "nil" ;
+grouping   -> "(" expression ")" ;
+unary      -> ( "-" | "!" ) expression ;
+binary     -> expression operator expression ;
+operator   -> "==" | "!=" | "<" | "<=" | ">" | ">=" | "+" | "-" | "*" | "/" ;
+```
+
+Terminals which match exact lexemes are **quoted strings**.
+
+Terminals which are a single lexeme but have text values which may vary are **CAPITALISED**.
+
 ## Disclaimer
 
 It's Lox-**y** because I'm not planning to create an exact replica of Lox. In

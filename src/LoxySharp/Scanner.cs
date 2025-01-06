@@ -154,10 +154,8 @@ public class Scanner
             Advance();
         }
 
-        // See if the identifier is a reserved word.
+        // See if the identifier is a reserved word or return as an identifier.
         string text = source.Substring(start, current - start);
-
-        // TODO: Test what happens if we can't find the key in the dictionary. It shouldn't throw an exception!
         TokenType type = Keywords.GetValueOrDefault(text, TokenType.IDENTIFIER);
         AddToken(type);
     }
