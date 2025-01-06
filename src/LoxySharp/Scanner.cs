@@ -129,11 +129,59 @@ public class Scanner
                 break;
 
             default:
-                // TODO: Finish Scanner. Add IsDigit.
-
-                Program.Error(line, "Unexpected character.");
+                if (char.IsDigit(c))
+                {
+                    Number();
+                }
+                else if (IsAlpha(c))
+                {
+                    Identifier();
+                }
+                else
+                {
+                    Program.Error(line, "Unexpected character.");
+                }
                 break;
         }
+    }
+
+    // TODO: Refactor some of the below private methods out into a ScannerExtensions class and unit test?
+
+    private void Identifier()
+    {
+        while (IsAlphaNumeric(Peek()))
+        {
+            Advance();
+        }
+
+        // See if the identifier is a reserved word.
+        string text = source.Substring(start, current - start);
+
+        // TODO: Test what happens if we can't find the key in the dictionary. It shouldn't throw an exception!
+        TokenType type = Keywords.GetValueOrDefault(text, TokenType.IDENTIFIER);
+        AddToken(type);
+    }
+
+    private void Number()
+    {
+        while (char.IsDigit(Peek()))
+        {
+            Advance();
+        }
+
+        // Look for a fractional part.
+        if (Peek() == '.' && char.IsDigit(PeekNext()))
+        {
+            // Consume the "."
+            Advance();
+
+            while (char.IsDigit(Peek()))
+            {
+                Advance();
+            }
+        }
+
+        AddToken(TokenType.NUMBER, double.Parse(source.Substring(start, current - start)));
     }
 
     private void String()
@@ -187,6 +235,26 @@ public class Scanner
         }
 
         return source.ElementAt(current);
+    }
+
+    private char PeekNext()
+    {
+        if (current + 1 >= source.Length)
+        {
+            return '\0';
+        }
+
+        return source.ElementAt(current + 1);
+    }
+
+    private static bool IsAlpha(char c)
+    {
+        return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_';
+    }
+
+    private static bool IsAlphaNumeric(char c)
+    {
+        return IsAlpha(c) || char.IsDigit(c);
     }
 
     private char Advance()
