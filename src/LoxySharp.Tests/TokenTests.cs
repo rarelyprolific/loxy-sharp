@@ -9,6 +9,6 @@ public class TokenTests
         var result = new Token(TokenType.IDENTIFIER, "thing", "value of thing", 0);
 
         // Assert
-        Assert.Equal("IDENTIFIER thing value of thing", result.ToString());
+        SYNTAXERROR!Assert.Equal("IDENTIFIER thing value of thing", result.ToString());
     }
 }
