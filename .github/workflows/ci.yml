@@ -23,9 +23,6 @@ jobs:
           with:
             dotnet-version: '8.0.x'
 
-        - name: Install Dependencies
-          run: dotnet restore
-
         - name: Build GenerateAstTool
           run: dotnet build ./src/GenerateAstTool/GenerateAstTool.csproj --configuration Release
 
