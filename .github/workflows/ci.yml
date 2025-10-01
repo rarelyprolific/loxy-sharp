@@ -1,0 +1,36 @@
+name: CI
+
+on:
+    push:
+        branches: main
+        paths:
+        - src/**
+    pull_request:
+        branches: main
+        paths:
+        - src/**
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+
+        - name: Set up .NET
+          uses: actions/setup-dotnet@v5
+          with:
+            dotnet-version: '8.0.x'
+
+        - name: Install Dependencies
+          run: dotnet restore
+
+        - name: Build GenerateAstTool
+          run: dotnet build ./src/GenerateAstTool/GenerateAstTool.csproj --configuration Release
+
+        - name: Build LoxySharp
+          run: dotnet build ./src/LoxySharp/LoxySharp.csproj --configuration Release
+
+        - name: Run LoxySharp.Tests
+          run: dotnet test ./src/LoxySharp.Tests/LoxySharp.Tests.csproj
