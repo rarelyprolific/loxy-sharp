@@ -9,7 +9,7 @@
         {
             if (args.Length != 1)
             {
-                ConsWRONGole.WriteLine("Usage: GenerateAstTool.exe [output directory]");
+                Console.WriteLine("Usage: GenerateAstTool.exe [output directory]");
                 Environment.Exit(64);
             }
 
